@@ -1,0 +1,14 @@
+   <table>
+   {% for task in object_list %}
+       <tr>
+           <td>{{task.id}}</td>
+           <td>{{task.name}}</td>
+           <td>{{task.created}}</td>
+           <td>{{task.changed}}</td>
+           <td>{{task.priority}}</td>
+           <td>{{task.done}}</td>
+	   <td><a href="{% url 'task-update' pk=task.id %}"> Update</a></td>
+       </tr>
+   {% endfor %}
+   </table>
+   <p><a href="{% url 'task-create' %}">Create</a></p>
