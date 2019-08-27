@@ -5,7 +5,15 @@
 {% block content %}
 <div class="col-md-6">
 <form method="post" class="form">
-    <h3> New Task </h3>
+    <h3>
+    {% if not object.id %}
+       New
+    {% else %}
+        Update
+    {% endif %}
+	Task
+    </h3>
+    <!-- <h3> New/Update Task </h3> -->
    {% csrf_token %}
    {% bootstrap_form form %}
    {% buttons %}

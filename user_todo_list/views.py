@@ -12,12 +12,17 @@ class TaskList(ListView):
 
 class TaskCreate(CreateView):
     model = Task
-    fields = '__all__'
+    fields = ['name', 'priority']
     success_url = reverse_lazy('task-list')
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        self.object = form.save()
+        return super(TaskCreate, self).form_valid(form)
 
 class TaskUpdate(UpdateView):
     model = Task
-    fields = '__all__'
+    fields = ['name', 'priority']
     success_url = reverse_lazy('task-list')
 
 class TaskDelete(DeleteView):
