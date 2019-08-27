@@ -10,6 +10,10 @@ class Priority(models.Model):
 
 
 class Task(models.Model):
+
+    def __str__(self):
+        return self.name
+
     name = models.CharField(max_length=120)
     priority = models.ForeignKey(Priority, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)

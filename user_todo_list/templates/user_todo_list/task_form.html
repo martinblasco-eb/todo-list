@@ -1,7 +1,19 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_javascript jquery='full' %}
 {% block content %}
-<form method="patch">
+<div class="col-md-6">
+<form method="post" class="form">
+    <h3> New Task </h3>
    {% csrf_token %}
-   {{ form }}
-   <input type="submit" value="Submit" />
+   {% bootstrap_form form %}
+   {% buttons %}
+    <button type="submit" class="btn btn-primary pull-right">
+            {% bootstrap_icon "save" %} Submit
+        </button>
+    {% endbuttons %}
+
 </form>
+</div>
 {% endblock %}

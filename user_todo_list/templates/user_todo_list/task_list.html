@@ -1,14 +1,44 @@
-   <table>
-   {% for task in object_list %}
-       <tr>
-           <td>{{task.id}}</td>
-           <td>{{task.name}}</td>
-           <td>{{task.created}}</td>
-           <td>{{task.changed}}</td>
-           <td>{{task.priority}}</td>
-           <td>{{task.done}}</td>
-	   <td><a href="{% url 'task-update' pk=task.id %}"> Update</a></td>
-       </tr>
-   {% endfor %}
-   </table>
-   <p><a href="{% url 'task-create' %}">Create</a></p>
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_javascript jquery='full' %}
+<div class="row">
+    <div class="col-md-12">
+	<h1 style="text-align: center"> Task list </h1>
+	<div style="margin: 10px 10px;">
+	    <a href="{% url 'task-create' %}" class="btn btn-success pull-right">
+		{% bootstrap_icon "plus" %} Create
+	    </a>
+	</div>
+	<table class="table table-striped">
+	    <thead>
+		<tr>
+		    <th scope="col">Name</th>
+		    <th scope="col">Created</th>
+		    <th scope="col">Changed</th>
+		    <th scope="col">Author</th>
+		    <th scope="col">Priority</th>
+		    <th scope="col">Done</th>
+		    <th scope="col">Actions</th>
+		</tr>
+	    </thead>
+	    <tbody>
+		{% for task in object_list %}
+		<tr>
+		    <td>{{task.name}}</td>
+		    <td>{{task.created}}</td>
+		    <td>{{task.changed}}</td>
+		    <td>{{task.user}}</td>
+		    <td>{{task.priority}}</td>
+		    <td>{{task.done}}</td>
+		    <td>
+			<a class="btn btn-info" href="{% url 'task-check' pk=task.id %}"> {% bootstrap_icon "ok" %} Finish</a>
+			<a class="btn btn-warning" href="{% url 'task-update' pk=task.id %}"> {% bootstrap_icon "pencil" %} Edit</a>
+			<a class="btn btn-danger" href="{% url 'task-delete' pk=task.id %}"> {% bootstrap_icon "trash" %} Delete</a>
+		    </td>
+		</tr>
+		{% endfor %}
+	    </tbody>
+	</table>
+    </div>
+</div>
