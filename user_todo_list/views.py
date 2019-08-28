@@ -21,7 +21,9 @@ class RecoveryPassword(PasswordResetForm):
     pass
 
 class TaskList(LoginRequiredMixin, ListView):
-    model = Task
+
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
 
 
 class TaskCreate(LoginRequiredMixin, CreateView):

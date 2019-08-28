@@ -26,20 +26,26 @@
 		</tr>
 	    </thead>
 	    <tbody>
-		{% for task in object_list %}
+		{% if object_list %}
+		    {% for task in object_list %}
+		    <tr>
+			<td>{{task.name}}</td>
+			<td>{{task.created}}</td>
+			<td>{{task.user}}</td>
+			<td>{{task.priority}}</td>
+			<td>{{task.done}}</td>
+			<td>
+			    <a class="btn btn-info" href="{% url 'task-check' pk=task.id %}"> {% bootstrap_icon "ok" %} Finish</a>
+			    <a class="btn btn-warning" href="{% url 'task-update' pk=task.id %}"> {% bootstrap_icon "pencil" %} Update</a>
+			    <a class="btn btn-danger" href="{% url 'task-delete' pk=task.id %}"> {% bootstrap_icon "trash" %} Delete</a>
+			</td>
+		    </tr>
+		    {% endfor %}
+		{% else %}
 		<tr>
-		    <td>{{task.name}}</td>
-		    <td>{{task.created}}</td>
-		    <td>{{task.user}}</td>
-		    <td>{{task.priority}}</td>
-		    <td>{{task.done}}</td>
-		    <td>
-			<a class="btn btn-info" href="{% url 'task-check' pk=task.id %}"> {% bootstrap_icon "ok" %} Finish</a>
-			<a class="btn btn-warning" href="{% url 'task-update' pk=task.id %}"> {% bootstrap_icon "pencil" %} Update</a>
-			<a class="btn btn-danger" href="{% url 'task-delete' pk=task.id %}"> {% bootstrap_icon "trash" %} Delete</a>
-		    </td>
+		    <td align="center" colspan="6"> You have no task yet!  </td>
 		</tr>
-		{% endfor %}
+		{% endif %}
 	    </tbody>
 	</table>
     </div>
