@@ -8,12 +8,12 @@ class Priority(models.Model):
     def __str__(self):
         return self.name
 
-class Event(models.Model):
+# class Event(models.Model):
+#     name = models.CharField(max_length=120)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
-    name = models.CharField(max_length=120)
 
 class Task(models.Model):
 
@@ -22,7 +22,8 @@ class Task(models.Model):
 
     name = models.CharField(max_length=120)
     priority = models.ForeignKey(Priority, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.CharField(max_length=120)
+    # event = models.ForeignKey(Event, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     changed = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(
