@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from user_todo_list.views import Login, Logout
+
 
 urlpatterns = [
+    url(r'^accounts/login/$', Login.as_view(), name='login'),
+    url(r'^accounts/logout/$', Logout.as_view(), name='logout'),
     url(r'^admin/', admin.site.urls),
     url(r'^task/', include('user_todo_list.urls')),
+    # url(r'^social/', include('social_django.urls', name='social-login')),
+
 ]

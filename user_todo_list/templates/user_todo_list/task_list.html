@@ -4,7 +4,11 @@
 {% bootstrap_javascript jquery='full' %}
 <div class="row">
     <div class="col-md-12">
-	<h1 style="text-align: center"> Task list </h1>
+	<a href="{% url 'logout' %}" class="btn btn-light pull-right" style="margin: 10px 10px">
+{% bootstrap_icon "new-window" %}
+	    Logout
+	</a>
+	<h1 style="text-align: center"> Tasks list </h1>
 	<div style="margin: 10px 10px;">
 	    <a href="{% url 'task-create' %}" class="btn btn-success pull-right">
 		{% bootstrap_icon "plus" %} Create
