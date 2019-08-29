@@ -36,19 +36,29 @@ class EventList(TemplateView):
 
     def get_queryset(self):
         pass
-        # return Event.objects.filter(user=self.request.user)
 
-class TaskList(LoginRequiredMixin, ListView):
+class TaskList(LoginRequiredMixin, TemplateView):
+
+    template_name='task_list.html'
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user)
+        pass
+
+    def get_context_data(self, **kwargs):
+        token = self.request.user.social_auth.all()[0]
+        # token = get_auth_token(self.request.user)
+        context = super(TaskList, self).get_context_data(**kwargs)
+        # query = get_api_events_id(token, self.kwargs['event_id'])
+        # context['event'] = query
+        context['tasks'] = Task.objects.filter(event=self.kwargs['event_id'])
+        return context
 
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     fields = ['name', 'priority']
     success_url = reverse_lazy('task-list')
-    
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         self.object = form.save()

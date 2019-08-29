@@ -22,7 +22,7 @@
 		    <tr>
 			<td>{{event.name.text}}</td>
 			<td>
-			    <a class="btn btn-primary" href="{% url 'task-list' %}"> {% bootstrap_icon "search" %} View Tasks</a>
+			    <a class="btn btn-primary" href="{% url 'task-list' event_id=event.id %}"> {% bootstrap_icon "search" %} View Tasks</a>
 			</td>
 		    </tr>
 		    {% endfor %}
