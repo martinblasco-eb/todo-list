@@ -77,9 +77,9 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         return reverse_lazy('task-list', kwargs={'event_id': self.kwargs['event_id']})
 
-def check_task(request, pk):
+def check_task(request, event_id, pk):
     task = Task.objects.get(pk=pk)
     if not task.done:
         task.done = True
     task.save()
-    return redirect('task-list')
+    return redirect('task-list', event_id=event_id)

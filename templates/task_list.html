@@ -35,7 +35,7 @@
 			<td>{{task.priority}}</td>
 			<td>{{task.done}}</td>
 			<td>
-			    <a class="btn btn-info" href="{% url 'task-check' pk=task.id %}"> {% bootstrap_icon "ok" %} Finish</a>
+			    <a class="btn btn-info" href="{% url 'task-check' event_id=event_id pk=task.id %}"> {% bootstrap_icon "ok" %} Finish</a>
 			    <a class="btn btn-warning" href="{% url 'task-update' event_id=event_id pk=task.id %}"> {% bootstrap_icon "pencil" %} Update</a>
 			    <a class="btn btn-danger" href="{% url 'task-delete' event_id=event_id pk=task.id %}"> {% bootstrap_icon "trash" %} Delete</a>
 			</td>

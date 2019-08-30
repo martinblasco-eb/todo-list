@@ -3,22 +3,22 @@
 {% bootstrap_javascript %}  
 {% bootstrap_javascript jquery='full' %} 
 {% block content %}
-<main class="login-form">
-<div class="container login-container">
-    <div class="row">
-	<div class="col-md-12 login-form-1">
-	    <h3>Login</h3>
-	    <form method="post">
+<form method="post">
+    <div class="container login-container">
+	<div class="row text-center">
+	    <div class="col-md-12 login-form-1">
+		<h3>Login</h3>
 		{% csrf_token %}
-		{{ form.as_p }}
+		<div class="form-group">
+		    {{ form.as_p }}
+		</div>
 		<div class="form-group">
 		    <button type="submit" class="btn btn-info">Login</button>
 		</div>
-	    </form>
-	    <div class="row"style="margin: 10px"> Do you have another account to login?</div>
+		<div class="row"style="margin: 10px"> Do you have another account to login?</div>
 		<a class="btn" style="color: #ffffff; background-color: #ffa500" href="{% url "social:begin" "eventbrite" %}">Eventbrite</a>
+	    </div>
 	</div>
     </div>
-</div>
-</main>
+</form>
 {% endblock %}
