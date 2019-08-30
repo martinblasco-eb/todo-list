@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'user_todo_list.apps.UserTodoListConfig',
+    'todo_list',
     'bootstrap3',
     'social_django',
     'django.contrib.admin',

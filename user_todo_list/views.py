@@ -41,15 +41,10 @@ class TaskList(LoginRequiredMixin, TemplateView):
 
     template_name='task_list.html'
 
-    def get_queryset(self):
-        pass
-
     def get_context_data(self, **kwargs):
         token = self.request.user.social_auth.all()[0]
-        # token = get_auth_token(self.request.user)
         context = super(TaskList, self).get_context_data(**kwargs)
-        # query = get_api_events_id(token, self.kwargs['event_id'])
-        # context['event'] = query
+        context['event_id'] = self.kwargs['event_id']
         context['tasks'] = Task.objects.filter(event=self.kwargs['event_id'])
         return context
 
@@ -57,9 +52,12 @@ class TaskList(LoginRequiredMixin, TemplateView):
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     fields = ['name', 'priority']
-    success_url = reverse_lazy('task-list')
+
+    def get_success_url(self):
+        return reverse_lazy('task-list', kwargs={'event_id': self.kwargs['event_id']})
 
     def form_valid(self, form):
+        form.instance.event = self.kwargs['event_id']
         form.instance.user = self.request.user
         self.object = form.save()
         return super(TaskCreate, self).form_valid(form)
@@ -67,11 +65,17 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ['name', 'priority']
-    success_url = reverse_lazy('task-list')
+    # success_url = reverse_lazy('task-list')
+
+    def get_success_url(self):
+        return reverse_lazy('task-list', kwargs={'event_id': self.kwargs['event_id']})
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
-    success_url = reverse_lazy('task-list')
+    # success_url = reverse_lazy('task-list')
+
+    def get_success_url(self):
+        return reverse_lazy('task-list', kwargs={'event_id': self.kwargs['event_id']})
 
 def check_task(request, pk):
     task = Task.objects.get(pk=pk)

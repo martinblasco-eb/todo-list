@@ -10,7 +10,7 @@
 	</a>
 	<h1 style="text-align: center"> Tasks list </h1>
 	<div style="margin: 10px 10px;">
-	    <a href="{% url 'task-create' %}" class="btn btn-success pull-right">
+	    <a href="{% url 'task-create' event_id %}" class="btn btn-success pull-right">
 		{% bootstrap_icon "plus" %} Create
 	    </a>
 	</div>
@@ -26,8 +26,8 @@
 		</tr>
 	    </thead>
 	    <tbody>
-		{% if object_list %}
-		    {% for task in object_list %}
+		{% if tasks %}
+		    {% for task in tasks %}
 		    <tr>
 			<td>{{task.name}}</td>
 			<td>{{task.created}}</td>
@@ -36,8 +36,8 @@
 			<td>{{task.done}}</td>
 			<td>
 			    <a class="btn btn-info" href="{% url 'task-check' pk=task.id %}"> {% bootstrap_icon "ok" %} Finish</a>
-			    <a class="btn btn-warning" href="{% url 'task-update' pk=task.id %}"> {% bootstrap_icon "pencil" %} Update</a>
-			    <a class="btn btn-danger" href="{% url 'task-delete' pk=task.id %}"> {% bootstrap_icon "trash" %} Delete</a>
+			    <a class="btn btn-warning" href="{% url 'task-update' event_id=event_id pk=task.id %}"> {% bootstrap_icon "pencil" %} Update</a>
+			    <a class="btn btn-danger" href="{% url 'task-delete' event_id=event_id pk=task.id %}"> {% bootstrap_icon "trash" %} Delete</a>
 			</td>
 		    </tr>
 		    {% endfor %}
