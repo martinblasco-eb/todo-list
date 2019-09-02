@@ -65,14 +65,12 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ['name', 'priority']
-    # success_url = reverse_lazy('task-list')
 
     def get_success_url(self):
         return reverse_lazy('task-list', kwargs={'event_id': self.kwargs['event_id']})
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
-    # success_url = reverse_lazy('task-list')
 
     def get_success_url(self):
         return reverse_lazy('task-list', kwargs={'event_id': self.kwargs['event_id']})
