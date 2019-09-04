@@ -1,12 +1,14 @@
 certifi==2019.6.16
 chardet==3.0.4
 coverage==4.5.4
+coveralls==1.8.2
 defusedxml==0.6.0
 Django==1.11
 django-bootstrap3==11.1.0
 django-extensions==2.2.1
 django-fontawesome==1.0
 django-jquery==3.1.0
+docopt==0.6.2
 entrypoints==0.3
 eventbrite==3.3.3
 idna==2.8
