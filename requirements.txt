@@ -11,6 +11,7 @@ django-jquery==3.1.0
 docopt==0.6.2
 entrypoints==0.3
 eventbrite==3.3.3
+gunicorn==19.9.0
 idna==2.8
 oauthlib==3.1.0
 PyJWT==1.7.1
