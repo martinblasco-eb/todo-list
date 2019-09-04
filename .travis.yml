@@ -2,7 +2,7 @@ language: python
 python:
           - "3.6"
 script:
-          - coverage run --source='.' manage.py test
+          - coverage run --source='.' manage.py test --settings=todo_list.settings.dev
 
 env:
           - DJANGO=1.11 

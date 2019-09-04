@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from . import get_env_variable
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -58,10 +57,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-SOCIAL_AUTH_EVENTBRITE_KEY = get_env_variable('SOCIAL_AUTH_EVENTBRITE_KEY')
-SOCIAL_AUTH_EVENTBRITE_SECRET = get_env_variable(
-    'SOCIAL_AUTH_EVENTBRITE_SECRET',
-)
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.eventbrite.EventbriteOAuth2',
