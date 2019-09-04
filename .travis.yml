@@ -1,0 +1,14 @@
+language: python
+python:
+          - "3.6"
+script:
+          - coverage run --source='.' manage.py test
+
+env:
+          - DJANGO=1.11 
+
+install:
+          - pip install -r requirements.txt
+
+after_success:
+          - coveralls

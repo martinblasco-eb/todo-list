@@ -1,0 +1,13 @@
+[run]
+source =
+    user_todo_list
+
+omit =
+    venv/*
+    */test*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def setUp
+    def test_
