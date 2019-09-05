@@ -1,3 +1,4 @@
+from .import get_env_variable
 """
 Django settings for todo_list project.
 
@@ -21,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9yphqgbd6!w2pr53^)(+x!wph5=!j$oci-yi!p)+)al#xz!7et'
+SECRET_KEY = get_env_variable('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

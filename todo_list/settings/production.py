@@ -8,6 +8,8 @@ SOCIAL_AUTH_EVENTBRITE_SECRET = get_env_variable(
             'SOCIAL_AUTH_EVENTBRITE_SECRET',
             )
 
+SECRET_KEY = get_env_variable('SECRET_KEY')
+ALLOWED_HOSTS = ['floating-ocean-20992.herokuapp.com']
 
 DATABASES = {
             'default': {
